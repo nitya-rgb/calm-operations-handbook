@@ -47,6 +47,41 @@ main{max-width:1240px;margin:0 auto;padding:24px 20px 20px}.intro{text-align:cen
  .chapter-number{font-size:86px;right:18px;top:52px}
  .chapter-page .page-content h2.chapter{font-size:29px}
  .chapter-page .page-content p{font-size:11px;line-height:1.6;padding:10px 12px}
+}
+/* Colour treatment limited to chapter-heading pages */
+.chapter-page{
+ background:linear-gradient(180deg,#294b42 0%,#294b42 46%,#e8ddc8 46%,#f3ead9 100%) !important;
+ border:1px solid #d2c3a7;
+}
+.chapter-page:before{
+ content:"";position:absolute;right:-72px;top:86px;width:290px;height:290px;border:1px solid #d9bd8c66;border-radius:50%;
+ box-shadow:0 0 0 22px #d9bd8c12,0 0 0 46px #d9bd8c0b;pointer-events:none;
+}
+.chapter-page:after{
+ content:"";position:absolute;left:0;top:0;width:7px;height:100%;background:#bd9864;pointer-events:none;
+}
+.chapter-page .folio-label{position:relative;z-index:2;color:#e6dbc5;border-color:#ffffff3d}
+.chapter-page .folio-label .folio-left,.chapter-page .folio-label .folio-right{color:#e6dbc5}
+.chapter-page .page-content{justify-content:flex-start;padding-top:54px}
+.chapter-page .chapter-number{top:62px;right:52px;color:#f0d9ad2e;font-size:176px}
+.chapter-page .chapter-kicker{color:#e6c58f}
+.chapter-page .chapter-kicker:after{background:#d6b77e}
+.chapter-page .page-content h2.chapter{color:#fff8e9;border-bottom-color:#bd9864;max-width:590px;text-shadow:0 2px 12px #172e2866}
+.chapter-page .page-content h3{color:#294b42;margin-top:26px}
+.chapter-page .page-content p{color:#3f4b41;background:#f8f1e4;border-left:4px solid #bd9864;box-shadow:0 8px 20px #4a40301a;padding:16px 19px;border-radius:0 5px 5px 0}
+.chapter-page .page-foot{border-color:#c7b99f}
+.chapter-page .page-foot>span:first-child{color:#82765f}
+.chapter-page .page-number{color:#5d4c32}
+@media(max-width:760px){
+ .chapter-page .page-content{padding-top:42px}
+ .chapter-page .chapter-number{font-size:130px;right:22px;top:58px}
+ .chapter-page .page-content h2.chapter{font-size:32px}
+}
+@media(max-width:420px){
+ .chapter-page .page-content{padding-top:32px}
+ .chapter-page .chapter-number{font-size:100px;right:15px;top:54px}
+ .chapter-page .page-content h2.chapter{font-size:28px}
+ .chapter-page .page-content p{padding:12px 13px}
 }</style></head><body>
 <header class="topbar"><div class="brand">CALM OPERATIONS <span style="color:#b18b58">/</span> DIGITAL EDITION</div><div class="top-actions"><a href="https://github.com/nitya-rgb/calm-operations-handbook" target="_blank" rel="noopener">Repository ↗</a></div></header>
 <main><div class="intro"><div class="eyebrow">A FIELD GUIDE FOR SMALL SERVICE BUSINESSES</div><h1>The Calm Operations Handbook</h1><p>Turn the page. Find a better way to work.</p></div>
