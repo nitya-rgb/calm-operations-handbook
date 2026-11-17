@@ -120,6 +120,65 @@ main{max-width:1240px;margin:0 auto;padding:24px 20px 20px}.intro{text-align:cen
  .page.cover{padding:38px 25px}
  .page.cover h1{font-size:40px}
  .page.cover .cover-stamp{right:22px;bottom:65px;width:52px;height:52px;font-size:18px}
+}
+/* Final chapter-page correction: one continuous paper field, no title crossing a colour seam */
+.chapter-page{
+ background:linear-gradient(135deg,#f8f2e5 0%,#efe4d1 100%) !important;
+ border:1px solid #d2c3a7 !important;
+}
+.chapter-page:before{
+ content:"";position:absolute;right:-88px;top:70px;width:310px;height:310px;border:1px solid #b9956250;border-radius:50%;
+ box-shadow:0 0 0 22px #b995620d,0 0 0 48px #b9956208;pointer-events:none;
+}
+.chapter-page:after{
+ content:"";position:absolute;left:0;top:0;width:100%;height:9px;background:linear-gradient(90deg,#294b42 0 62%,#bd9864 62% 82%,#819482 82% 100%);pointer-events:none;
+}
+.chapter-page .folio-label{
+ position:relative;z-index:2;color:#82765f !important;border-color:#d7cbb7 !important;
+}
+.chapter-page .folio-label .folio-left,.chapter-page .folio-label .folio-right{color:#82765f !important}
+.chapter-page .page-content{
+ position:relative;z-index:1;justify-content:center !important;
+ padding:0 14px 26px !important;max-width:640px;
+}
+.chapter-page .chapter-number{
+ top:58px !important;right:38px !important;font-size:158px !important;
+ color:#294b420c !important;z-index:0;
+}
+.chapter-page .chapter-kicker{
+ color:#a47c49 !important;margin:0 0 17px !important;
+ font-size:9px;letter-spacing:.22em;
+}
+.chapter-page .chapter-kicker:after{background:#cbb58f !important}
+.chapter-page .page-content h2.chapter{
+ position:relative;z-index:1;color:#294b42 !important;
+ font-size:clamp(32px,3.4vw,41px) !important;line-height:1.12 !important;
+ max-width:570px;margin:0 0 20px !important;padding:0 0 17px !important;
+ border-bottom:2px solid #c4ad87 !important;text-shadow:none !important;
+}
+.chapter-page .page-content h3{
+ color:#506b5b !important;font-size:17px !important;
+ margin:2px 0 9px !important;
+}
+.chapter-page .page-content p{
+ color:#414b43 !important;background:#fffaf0 !important;
+ border-left:3px solid #bd9864 !important;box-shadow:0 5px 15px #4a403012 !important;
+ padding:13px 16px !important;border-radius:0 4px 4px 0 !important;
+ font-size:12px !important;line-height:1.65 !important;margin:0 0 10px !important;
+}
+.chapter-page .page-foot{border-color:#d2c5b0 !important}
+.chapter-page .page-foot>span:first-child{color:#82765f !important}
+.chapter-page .page-number{color:#5d4c32 !important}
+@media(max-width:760px){
+ .chapter-page .page-content{padding:0 4px 28px !important}
+ .chapter-page .chapter-number{font-size:116px !important;right:22px !important;top:50px !important}
+ .chapter-page .page-content h2.chapter{font-size:31px !important}
+ .chapter-page .page-content p{font-size:11px !important;line-height:1.58 !important;padding:11px 13px !important}
+}
+@media(max-width:420px){
+ .chapter-page .page-content{padding:0 2px 30px !important}
+ .chapter-page .chapter-number{font-size:88px !important;right:16px !important;top:44px !important}
+ .chapter-page .page-content h2.chapter{font-size:27px !important}
 }</style></head><body>
 <header class="topbar"><div class="brand">CALM OPERATIONS <span style="color:#b18b58">/</span> DIGITAL EDITION</div><div class="top-actions"><a href="https://github.com/nitya-rgb/calm-operations-handbook" target="_blank" rel="noopener">Repository ↗</a></div></header>
 <main><div class="intro"><div class="eyebrow">A FIELD GUIDE FOR SMALL SERVICE BUSINESSES</div><h1>The Calm Operations Handbook</h1><p>Turn the page. Find a better way to work.</p></div>
