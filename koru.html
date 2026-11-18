@@ -87,7 +87,7 @@ const plywoodMat=new THREE.MeshStandardMaterial({color:0xb58c65,roughness:.68});
 const metalMat=new THREE.MeshStandardMaterial({color:0x77736c,metalness:.78,roughness:.3});
 const paperMats=[0xf2eee4,0xece7dc,0xd7dfc9,0xe4d2a6].map(c=>new THREE.MeshStandardMaterial({color:c,roughness:.92,side:THREE.DoubleSide}));
 const root=new THREE.Group();scene.add(root);
-function beam(parent,w,h,d,mat,x,y,z,r=.001){const geo=new RoundedBoxGeometry(w,h,d,3,r);const m=new THREE.Mesh(geo,mat);m.position.set(x,y,z);m.castShadow=true;m.receiveShadow=true;parent.add(m);return m}
+function beam(parent,w,h,d,mat,x,y,z,r=.001){const geo=new RoundedBoxGeometry(w,h,d,3,r);const m=new THREE.Mesh(geo,mat);if(mat===woodMaterial)m.userData.wood=true;m.position.set(x,y,z);m.castShadow=true;m.receiveShadow=true;parent.add(m);return m}
 function addPaper(parent,x,y,z,angle,matIndex){const g=new THREE.Group();g.position.set(x,y,z);g.rotation.y=angle;parent.add(g);beam(g,.092,.135,.002,paperMats[matIndex],0,0,0,.001);const ink=new THREE.MeshBasicMaterial({color:0x77746d});for(let i=0;i<5;i++)beam(g,.059,.0015,.001,ink,0,.025-i*.012,.002,.0003);const pin=new THREE.Mesh(new THREE.SphereGeometry(.006,16,12),new THREE.MeshStandardMaterial({color:0xb36d3f,metalness:.45,roughness:.28}));pin.position.set(0,.067,.008);g.add(pin)}
 function makeModule(offset){const g=new THREE.Group();g.position.x=offset;root.add(g);
  const W=.45,H=1.15,postW=.02,postD=.04,boardBottom=.66,boardTop=1.15,boardOuterH=.49,railD=.022,railH=.012;
