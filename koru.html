@@ -1,125 +1,67 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>KERU — 360° Furniture Viewer</title>
-<meta name="description" content="Realistic interactive 360-degree model of KERU modular pinboard furniture, based on the original Semester 5 design.">
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KERU — Original Design 360° Viewer</title>
 <style>
-:root{--ink:#292720;--muted:#777267;--paper:#f2f0e9;--panel:#faf9f5;--line:#dedbd2;--accent:#9b6a43}
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}
-.app{height:100%;display:grid;grid-template-columns:310px 1fr}.sidebar{z-index:2;background:var(--panel);border-right:1px solid var(--line);padding:26px 23px;display:flex;flex-direction:column;gap:19px;overflow:auto}
-.brand{font-size:10px;letter-spacing:.19em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between}
-h1{font-family:Georgia,serif;font-size:44px;font-weight:400;letter-spacing:.02em;margin:0}.sub{font-size:12px;line-height:1.65;color:#716d63;margin:-12px 0 0}
-.rule{height:1px;background:var(--line)}.kicker{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
-.controls{display:grid;grid-template-columns:1fr 1fr;gap:8px}button{font:inherit;cursor:pointer;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:3px;padding:10px 8px;font-size:11px}button:hover{border-color:var(--accent)}button.active{background:#302e28;color:#fff;border-color:#302e28}button.wide{grid-column:span 2}
-.swatches{display:flex;gap:10px}.swatch{width:28px;height:28px;border-radius:50%;padding:0;border:2px solid white;box-shadow:0 0 0 1px var(--line)}.swatch.active{box-shadow:0 0 0 2px var(--accent)}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:9px}.stat{padding:10px;background:#f0eee7}.stat strong{display:block;font-family:Georgia,serif;font-size:21px;font-weight:400}.stat span{font-size:9px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
-.note{font-size:10px;line-height:1.55;color:#777267;margin-top:auto}
-.stage{position:relative;min-width:0;background:radial-gradient(ellipse at 50% 35%,#eeece5 0%,#d9d6ce 56%,#c6c2b9 100%)}#view{width:100%;height:100%;display:block;touch-action:none}
-.topbar{position:absolute;top:20px;left:24px;right:24px;display:flex;justify-content:space-between;pointer-events:none}.pill{background:#f8f7f1dd;border:1px solid #ffffffaa;border-radius:30px;padding:9px 13px;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#5f5b52;backdrop-filter:blur(8px)}
-.hint{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);background:#292720dd;color:white;border-radius:30px;padding:9px 14px;font-size:10px;white-space:nowrap;pointer-events:none}.corner{position:absolute;bottom:20px;right:22px;font-size:9px;color:#625e55;letter-spacing:.12em;text-transform:uppercase}
-@media(max-width:760px){.app{grid-template-columns:1fr;grid-template-rows:auto 1fr}.sidebar{padding:14px 16px;gap:10px;max-height:42vh}.brand{display:none}h1{font-size:30px}.sub{margin:0}.rule{display:none}.note{display:none}.stats{grid-template-columns:repeat(4,1fr)}.stat{padding:6px}.stat strong{font-size:15px}.stage{min-height:0}.topbar{top:9px;left:10px;right:10px}.hint{bottom:10px}.corner{display:none}}
-</style>
-</head>
-<body>
-<div class="app">
-<aside class="sidebar">
-<div class="brand"><span>Furniture typology · Sem 05</span><span>01 / 01</span></div>
-<h1>KERU<span style="color:#a97851">.</span></h1>
-<p class="sub">A modular pinboard and organiser. Rebuilt from the original furniture design references.</p>
-<div class="rule"></div>
-<section><div class="kicker">Model arrangement</div><div class="controls">
-<button id="single">Single unit</button><button id="triple" class="active">3-unit system</button>
-<button id="front">Front elevation</button><button id="reset">Reset view</button>
-<button id="auto" class="wide">Start slow rotation</button>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#e7e4dc;color:#292720;font-family:Inter,system-ui,Arial,sans-serif}
+.app{height:100%;display:grid;grid-template-columns:290px 1fr}.side{background:#faf9f5;border-right:1px solid #d9d5cb;padding:27px 23px;display:flex;flex-direction:column;gap:17px;z-index:2}
+.eyebrow{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#817b70}h1{font:400 43px Georgia,serif;margin:0}.desc{font-size:12px;line-height:1.65;color:#716d63;margin:-8px 0 3px}.line{height:1px;background:#dedbd2}.label{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#817b70;margin-bottom:9px}
+button{font:inherit;font-size:11px;padding:10px;border:1px solid #d8d4ca;background:white;color:#302e28;border-radius:3px;cursor:pointer}button:hover{border-color:#936b4b}button.active{background:#302e28;color:white;border-color:#302e28}.buttons{display:grid;grid-template-columns:1fr 1fr;gap:8px}.wide{grid-column:span 2}
+.spec{display:grid;grid-template-columns:1fr 1fr;gap:8px}.spec div{background:#f0eee8;padding:10px}.spec strong{display:block;font:400 20px Georgia,serif}.spec small{font-size:9px;color:#777166;text-transform:uppercase;letter-spacing:.06em}
+.note{margin-top:auto;font-size:10px;line-height:1.6;color:#777166}
+.stage{position:relative;min-width:0;background:radial-gradient(ellipse at 50% 38%,#f0eee8,#d1cec6)}canvas{width:100%;height:100%;display:block;touch-action:none}.top{position:absolute;top:18px;left:20px;right:20px;display:flex;justify-content:space-between;pointer-events:none}.tag{background:#faf9f0df;border:1px solid #fff;border-radius:30px;padding:9px 13px;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#625e55}.hint{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);background:#292720df;color:white;border-radius:30px;padding:9px 14px;font-size:10px;white-space:nowrap}
+.loading{position:absolute;inset:0;display:grid;place-items:center;color:#69645a;font-size:12px;letter-spacing:.08em}.error{color:#9b3c2f}
+@media(max-width:700px){.app{grid-template-columns:1fr;grid-template-rows:auto 1fr}.side{padding:12px 15px;gap:8px}.eyebrow,.line,.note{display:none}h1{font-size:28px}.desc{margin:0}.spec{grid-template-columns:repeat(4,1fr)}.spec div{padding:6px}.spec strong{font-size:15px}.stage{min-height:0}}
+</style></head><body>
+<div class="app"><aside class="side"><div class="eyebrow">Semester 05 · Original SketchUp geometry</div><h1>KERU<span style="color:#a87852">.</span></h1>
+<p class="desc">Your original furniture design, loaded directly from the SketchUp model — not a redrawn interpretation.</p><div class="line"></div>
+<section><div class="label">View controls</div><div class="buttons">
+<button id="front">Front view</button><button id="reset" class="active">Reset view</button>
+<button id="rotate" class="wide">Start slow rotation</button>
 </div></section>
-<section><div class="kicker">Timber finish</div><div class="swatches">
-<button class="swatch active" data-wood="teak" title="Natural teak" style="background:linear-gradient(135deg,#d2a071,#805033)"></button>
-<button class="swatch" data-wood="walnut" title="Walnut" style="background:linear-gradient(135deg,#88634b,#39271f)"></button>
-<button class="swatch" data-wood="ash" title="Pale ash" style="background:linear-gradient(135deg,#e4d2b1,#b18d62)"></button>
-</div></section>
-<section><div class="kicker">Design dimensions</div><div class="stats">
-<div class="stat"><strong>1150</strong><span>Overall height · mm</span></div>
-<div class="stat"><strong>450</strong><span>Overall width · mm</span></div>
-<div class="stat"><strong>410 × 450</strong><span>Clear pinboard · mm</span></div>
-<div class="stat"><strong>4</strong><span>Horizontal rails</span></div>
-</div></section>
-<div class="rule"></div>
-<p class="note">Visual reconstruction from your supplied front and perspective reference images. Overall module envelope: 450 W × 1150 H mm. Timber member section shown as 20 × 40 mm. Depth and connector detailing remain indicative where the source drawings do not specify them.</p>
+<section><div class="label">Model information</div><div class="spec">
+<div><strong>Original</strong><small>SketchUp mesh</small></div>
+<div><strong>360°</strong><small>Orbit view</small></div>
+<div><strong>KERU</strong><small>Design name</small></div>
+<div><strong>1:1</strong><small>Source geometry</small></div>
+</div></section><div class="line"></div>
+<p class="note">Geometry is imported from the original Untitled.skp file via its Collada export. The model's proportions, frame layout, cork panel and four horizontal rails are kept from the source. Lighting and environment are added only for a more realistic presentation.</p>
 </aside>
-<main class="stage">
-<div class="topbar"><span class="pill">KERU · 360° model</span><span class="pill" id="viewLabel">3-unit system · perspective</span></div>
-<canvas id="view"></canvas>
-<div class="hint">Drag to orbit · Scroll to zoom · Right-drag to pan</div><div class="corner">KERU / Furniture study</div>
-</main>
-</div>
+<main class="stage"><div class="top"><span class="tag">KERU · Original model</span><span class="tag" id="status">Loading original geometry…</span></div><div class="loading" id="loading">Loading your original KERU model…</div><canvas id="view"></canvas><div class="hint">Drag to orbit · Scroll to zoom · Right-drag to pan</div></main></div>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
 <script type="module">
 import * as THREE from 'three';
 import {OrbitControls} from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js';
+import {ColladaLoader} from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/ColladaLoader.js';
 import {RoomEnvironment} from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/environments/RoomEnvironment.js';
-import {RoundedBoxGeometry} from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/geometries/RoundedBoxGeometry.js';
-const canvas=document.querySelector('#view');
-const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
-renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(canvas.clientWidth,canvas.clientHeight);
-renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
-renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;
-const scene=new THREE.Scene();
-const camera=new THREE.PerspectiveCamera(32,canvas.clientWidth/canvas.clientHeight,.1,100);
-camera.position.set(2.0,1.35,2.8);
-const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.dampingFactor=.055;controls.target.set(0,.58,0);controls.minDistance=1.15;controls.maxDistance=7;controls.maxPolarAngle=Math.PI*.49;controls.autoRotate=false;controls.autoRotateSpeed=.45;
+const canvas=document.querySelector('#view'),loading=document.querySelector('#loading');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(canvas.clientWidth,canvas.clientHeight);
+renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;
+const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(32,canvas.clientWidth/canvas.clientHeight,.01,1000);
+scene.add(new THREE.HemisphereLight(0xfff8ec,0x77716a,1.7));
+const key=new THREE.DirectionalLight(0xffe7d0,3.0);key.position.set(-3,5,4);key.castShadow=true;key.shadow.mapSize.set(2048,2048);scene.add(key);
+const fill=new THREE.DirectionalLight(0xe4eaf2,1.1);fill.position.set(4,2,-4);scene.add(fill);
 const pmrem=new THREE.PMREMGenerator(renderer);scene.environment=pmrem.fromScene(new RoomEnvironment(),.04).texture;pmrem.dispose();
-scene.add(new THREE.HemisphereLight(0xfff7eb,0x77716a,1.65));
-const key=new THREE.DirectionalLight(0xffe8d0,3.2);key.position.set(-2.8,4.5,3.8);key.castShadow=true;key.shadow.mapSize.set(2048,2048);key.shadow.camera.left=-3;key.shadow.camera.right=3;key.shadow.camera.top=3;key.shadow.camera.bottom=-3;key.shadow.bias=-.00025;scene.add(key);
-const fill=new THREE.DirectionalLight(0xe3e9f1,1.05);fill.position.set(3,2,-3);scene.add(fill);
-const rim=new THREE.DirectionalLight(0xffd9b5,.75);rim.position.set(0,3,-2);scene.add(rim);
-const floorMat=new THREE.MeshStandardMaterial({color:0xd2d0c9,roughness:.88,metalness:0});
-const floor=new THREE.Mesh(new THREE.PlaneGeometry(200,200),floorMat);floor.rotation.x=-Math.PI/2;floor.position.y=-.008;floor.receiveShadow=true;scene.add(floor);
-function textureCanvas(w,h,draw){const c=document.createElement('canvas');c.width=w;c.height=h;draw(c.getContext('2d'),w,h);return c}
-function woodMaps(base,seed){let n=seed;const rand=()=>{n=(n*1664525+1013904223)>>>0;return n/4294967296};const c=textureCanvas(512,512,(x,w,h)=>{x.fillStyle=base;x.fillRect(0,0,w,h);for(let i=0;i<2500;i++){const xx=rand()*w,yy=rand()*h;x.strokeStyle=i%5===0?'rgba(255,220,170,.14)':'rgba(48,27,13,.075)';x.lineWidth=rand()*1.4+.25;x.beginPath();x.moveTo(xx,yy);x.bezierCurveTo(xx+(rand()-.5)*8,yy+55,xx+(rand()-.5)*12,yy+120,xx+(rand()-.5)*5,yy+230);x.stroke()}for(let i=0;i<4500;i++){x.fillStyle=rand()>.5?'rgba(255,255,255,.025)':'rgba(30,18,10,.025)';x.fillRect(rand()*w,rand()*h,1,1)}});const map=new THREE.CanvasTexture(c);map.colorSpace=THREE.SRGBColorSpace;map.wrapS=map.wrapT=THREE.RepeatWrapping;map.repeat.set(1.5,1.2);const bump=new THREE.CanvasTexture(c);bump.wrapS=bump.wrapT=THREE.RepeatWrapping;bump.repeat.copy(map.repeat);return {map,bump}}
-const woodDefs={teak:{base:'#ad7549',color:0xe0b184,seed:7},walnut:{base:'#684633',color:0xc39a78,seed:19},ash:{base:'#c7ad84',color:0xf0dfbd,seed:31}};
-let woodKey='teak';let woodMaterial;
-function makeWood(){const d=woodDefs[woodKey],maps=woodMaps(d.base,d.seed);return new THREE.MeshStandardMaterial({color:d.color,map:maps.map,bumpMap:maps.bump,bumpScale:.012,roughness:.48,metalness:0})}
-woodMaterial=makeWood();
-function corkMaterial(){const c=textureCanvas(512,512,(x,w,h)=>{x.fillStyle='#bca58d';x.fillRect(0,0,w,h);let n=14;for(let i=0;i<48000;i++){n=(n*1664525+1013904223)>>>0;const xx=n%w,yy=(n>>>9)%h,a=.035+(n%80)/950;x.fillStyle=(n%3===0?'rgba(74,51,34,':'rgba(255,245,224,')+a+')';const s=(n%3)+.4;x.fillRect(xx,yy,s,s)}});const map=new THREE.CanvasTexture(c);map.colorSpace=THREE.SRGBColorSpace;const bump=new THREE.CanvasTexture(c);return new THREE.MeshStandardMaterial({map,bumpMap:bump,bumpScale:.025,roughness:.96})}
-const corkMat=corkMaterial();
-const plywoodMat=new THREE.MeshStandardMaterial({color:0xb58c65,roughness:.68});
-const metalMat=new THREE.MeshStandardMaterial({color:0x77736c,metalness:.78,roughness:.3});
-const paperMats=[0xf2eee4,0xece7dc,0xd7dfc9,0xe4d2a6].map(c=>new THREE.MeshStandardMaterial({color:c,roughness:.92,side:THREE.DoubleSide}));
-const root=new THREE.Group();scene.add(root);
-function beam(parent,w,h,d,mat,x,y,z,r=.001){const geo=new RoundedBoxGeometry(w,h,d,3,r);const m=new THREE.Mesh(geo,mat);if(mat===woodMaterial)m.userData.wood=true;m.position.set(x,y,z);m.castShadow=true;m.receiveShadow=true;parent.add(m);return m}
-function addPaper(parent,x,y,z,angle,matIndex){const g=new THREE.Group();g.position.set(x,y,z);g.rotation.y=angle;parent.add(g);beam(g,.092,.135,.002,paperMats[matIndex],0,0,0,.001);const ink=new THREE.MeshBasicMaterial({color:0x77746d});for(let i=0;i<5;i++)beam(g,.059,.0015,.001,ink,0,.025-i*.012,.002,.0003);const pin=new THREE.Mesh(new THREE.SphereGeometry(.006,16,12),new THREE.MeshStandardMaterial({color:0xb36d3f,metalness:.45,roughness:.28}));pin.position.set(0,.067,.008);g.add(pin)}
-function makeModule(offset){const g=new THREE.Group();g.position.x=offset;root.add(g);
- const W=.45,H=1.15,postW=.02,postD=.04,boardBottom=.66,boardTop=1.15,boardOuterH=.49,railD=.022,railH=.012;
- // Two continuous side uprights define the silhouette and carry the four lower rails.
- for(const x of [-W/2+postW/2,W/2-postW/2])beam(g,postW,H,postD,woodMaterial,x,H/2,0,.0015);
- // Top and lower cross members frame the cork infill; side members are the continuous uprights.
- beam(g,W-2*postW,postW,postD,woodMaterial,0,boardTop-postW/2,0,.0015);
- beam(g,W-2*postW,postW,postD,woodMaterial,0,boardBottom+postW/2,0,.0015);
- // Cork face and thin backing, sized to the 410 x 450 mm clear opening.
- beam(g,W-2*postW-.002,boardOuterH-2*postW,.008,plywoodMat,0,(boardBottom+boardTop)/2,-.012,.001);
- beam(g,W-2*postW-.004,boardOuterH-2*postW-.004,.004,corkMat,0,(boardBottom+boardTop)/2,.006,.001);
- // Four narrow, evenly spaced horizontal organiser rails below the board.
- [.10,.245,.39,.535].forEach(y=>beam(g,W-2*postW,railH,railD,woodMaterial,0,y,0,.001));
- // Small projecting side connector sleeves, as visible in the supplied reference.
- for(const side of [-1,1]){for(const y of [.34,.78]){const sleeve=new THREE.Mesh(new THREE.CylinderGeometry(.007,.007,.035,24),metalMat);sleeve.rotation.z=Math.PI/2;sleeve.position.set(side*(W/2+.012),y,0);sleeve.castShadow=true;g.add(sleeve);}}
- // A restrained example of the intended pinboard use, matching the supplied occupied view.
- addPaper(g,-.085,.94,.014,-.035,0);addPaper(g,.055,.91,.014,.025,1);
- beam(g,.052,.038,.002,paperMats[2],-.085,.825,.015,.001);beam(g,.052,.038,.002,paperMats[3],.055,.795,.015,.001);
- return g}
-let layout=3;
-function setLayout(count){while(root.children.length)root.remove(root.children[0]);layout=count;if(count===1){makeModule(0);controls.target.set(0,.58,0);camera.position.set(1.65,1.25,2.45)}else{[-.45,0,.45].forEach(x=>makeModule(x));controls.target.set(0,.58,0);camera.position.set(2.25,1.35,3.25)}controls.update();document.querySelector('#viewLabel').textContent=(count===1?'Single unit':'3-unit system')+' · perspective';document.querySelector('#single').classList.toggle('active',count===1);document.querySelector('#triple').classList.toggle('active',count===3)}
-setLayout(3);
-document.querySelector('#single').onclick=()=>setLayout(1);document.querySelector('#triple').onclick=()=>setLayout(3);
-document.querySelector('#front').onclick=()=>{camera.position.set(0,1.05,4.1);controls.target.set(0,.58,0);controls.update();document.querySelector('#viewLabel').textContent='Front elevation'};
-document.querySelector('#reset').onclick=()=>{setLayout(layout);controls.autoRotate=false;document.querySelector('#auto').textContent='Start slow rotation';document.querySelector('#auto').classList.remove('active')};
-document.querySelector('#auto').onclick=e=>{controls.autoRotate=!controls.autoRotate;e.currentTarget.textContent=controls.autoRotate?'Pause rotation':'Start slow rotation';e.currentTarget.classList.toggle('active',controls.autoRotate)};
-document.querySelectorAll('.swatch').forEach(b=>b.onclick=()=>{woodKey=b.dataset.wood;woodMaterial=makeWood();document.querySelectorAll('.swatch').forEach(s=>s.classList.toggle('active',s===b));root.traverse(o=>{if(o.isMesh&&o.material===o.userData.woodMat)o.material=woodMaterial});root.traverse(o=>{if(o.isMesh&&o.material&&o.material.userData&&o.material.userData.isWood)o.material=woodMaterial})});
-// Keep references to all timber members so finish changes affect every wooden component.
-function applyWood(){root.traverse(o=>{if(o.isMesh&&o.userData.wood)o.material=woodMaterial})}
-document.querySelectorAll('.swatch').forEach(b=>b.addEventListener('click',applyWood));
-const originalBeam=beam;
-const resize=()=>{const w=canvas.clientWidth,h=canvas.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()};new ResizeObserver(resize).observe(canvas);
+const floor=new THREE.Mesh(new THREE.PlaneGeometry(200,200),new THREE.MeshStandardMaterial({color:0xd1cec6,roughness:.9}));floor.rotation.x=-Math.PI/2;floor.position.y=-.015;floor.receiveShadow=true;scene.add(floor);
+function tex(kind){const c=document.createElement('canvas');c.width=c.height=512;const x=c.getContext('2d');if(kind==='cork'){x.fillStyle='#b8a28c';x.fillRect(0,0,512,512);let n=7;for(let i=0;i<42000;i++){n=(n*1664525+1013904223)>>>0;x.fillStyle=(n%2?'rgba(66,46,31,.12)':'rgba(255,244,222,.18)');let s=(n%3)+.3;x.fillRect(n%512,(n>>>9)%512,s,s)}}else{x.fillStyle='#b1845b';x.fillRect(0,0,512,512);let n=13;for(let i=0;i<2100;i++){n=(n*1664525+1013904223)>>>0;let xx=n%512,yy=(n>>>9)%512;x.strokeStyle=n%3?'rgba(64,37,20,.09)':'rgba(255,224,180,.13)';x.lineWidth=.5+(n%10)/10;x.beginPath();x.moveTo(xx,yy);x.bezierCurveTo(xx+4,yy+50,xx-3,yy+100,xx+2,yy+220);x.stroke()}}const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(1.5,1.5);return t}
+const woodMap=tex('wood'),corkMap=tex('cork');
+const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.dampingFactor=.06;controls.autoRotate=false;controls.autoRotateSpeed=.45;
+const modelGroup=new THREE.Group();scene.add(modelGroup);
+const daeUrl='https://raw.githack.com/nitya-rgb/calm-operations-handbook/8879656f45b1b207978df12ce5b94b617c3345d9/keru-original.dae';
+new ColladaLoader().load(daeUrl,collada=>{
+ const model=collada.scene;model.traverse(o=>{if(o.isMesh){o.castShadow=true;o.receiveShadow=true;const mats=Array.isArray(o.material)?o.material:[o.material];for(const m of mats){if(!m)continue;const nm=(m.name||'').toLowerCase();m.roughness=.62;m.metalness=0;if(nm.includes('carpet')){m.map=corkMap;m.color.set(0xffffff);m.roughness=.95;m.bumpMap=corkMap;m.bumpScale=.025}else if(nm.includes('plywood')||nm==='material'){m.map=woodMap;m.color.set(0xffffff);m.roughness=.5;m.bumpMap=woodMap;m.bumpScale=.012}}}});
+ modelGroup.add(model);
+ const box=new THREE.Box3().setFromObject(model),size=box.getSize(new THREE.Vector3()),center=box.getCenter(new THREE.Vector3());
+ model.position.sub(center);modelGroup.position.set(0,0,0);
+ const maxDim=Math.max(size.x,size.y,size.z),dist=maxDim/(2*Math.tan(THREE.MathUtils.degToRad(camera.fov/2)))*1.65;
+ camera.position.set(dist*.85,dist*.58,dist*1.65);camera.near=Math.max(.001,maxDim/1000);camera.far=maxDim*100;camera.updateProjectionMatrix();
+ controls.target.set(0,0,0);controls.minDistance=maxDim*.65;controls.maxDistance=maxDim*8;controls.update();
+ floor.position.y=-size.y*.52;floor.scale.setScalar(Math.max(1,maxDim/20));
+ key.shadow.camera.left=-maxDim;key.shadow.camera.right=maxDim;key.shadow.camera.top=maxDim;key.shadow.camera.bottom=-maxDim;key.shadow.camera.far=maxDim*5;
+ document.querySelector('#status').textContent='Original SketchUp geometry loaded';loading.style.display='none';
+},undefined,error=>{loading.textContent='Could not load original model. Please refresh the page.';loading.classList.add('error');document.querySelector('#status').textContent='Model load error';console.error(error)});
+document.querySelector('#front').onclick=()=>{const b=new THREE.Box3().setFromObject(modelGroup),s=b.getSize(new THREE.Vector3()),d=Math.max(s.x,s.y,s.z)*2.8;camera.position.set(0,0,d);controls.target.set(0,0,0);controls.update()};
+document.querySelector('#reset').onclick=()=>location.reload();
+document.querySelector('#rotate').onclick=e=>{controls.autoRotate=!controls.autoRotate;e.currentTarget.textContent=controls.autoRotate?'Pause slow rotation':'Start slow rotation';e.currentTarget.classList.toggle('active',controls.autoRotate)};
+new ResizeObserver(()=>{const w=canvas.clientWidth,h=canvas.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()}).observe(canvas);
 function animate(){requestAnimationFrame(animate);controls.update();renderer.render(scene,camera)}animate();
-</script>
-</body></html>
+</script></body></html>
