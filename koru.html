@@ -46,7 +46,7 @@ function tex(kind){const c=document.createElement('canvas');c.width=c.height=512
 const woodMap=tex('wood'),corkMap=tex('cork');
 const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.dampingFactor=.06;controls.autoRotate=false;controls.autoRotateSpeed=.45;
 const modelGroup=new THREE.Group();scene.add(modelGroup);
-const daeUrl='https://raw.githack.com/nitya-rgb/calm-operations-handbook/8879656f45b1b207978df12ce5b94b617c3345d9/keru-original.dae';
+const daeUrl='https://cdn.jsdelivr.net/gh/nitya-rgb/calm-operations-handbook@8879656f45b1b207978df12ce5b94b617c3345d9/keru-original.dae';
 new ColladaLoader().load(daeUrl,collada=>{
  const model=collada.scene;model.traverse(o=>{if(o.isMesh){o.castShadow=true;o.receiveShadow=true;const mats=Array.isArray(o.material)?o.material:[o.material];for(const m of mats){if(!m)continue;const nm=(m.name||'').toLowerCase();m.roughness=.62;m.metalness=0;if(nm.includes('carpet')){m.map=corkMap;m.color.set(0xffffff);m.roughness=.95;m.bumpMap=corkMap;m.bumpScale=.025}else if(nm.includes('plywood')||nm==='material'){m.map=woodMap;m.color.set(0xffffff);m.roughness=.5;m.bumpMap=woodMap;m.bumpScale=.012}}}});
  modelGroup.add(model);
