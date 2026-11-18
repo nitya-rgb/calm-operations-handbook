@@ -2,113 +2,123 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>KORU — 360° Furniture Viewer</title>
-<meta name="description" content="Interactive 360-degree 3D visualisation of KORU modular pinboard partition furniture.">
+<title>KERU — 360° Furniture Viewer</title>
+<meta name="description" content="Realistic interactive 360-degree model of KERU modular pinboard furniture, based on the original Semester 5 design.">
 <style>
-:root{--ink:#27251f;--muted:#817c70;--paper:#f2efe7;--panel:#faf8f2;--line:#ddd7ca;--accent:#9a6842}
+:root{--ink:#292720;--muted:#777267;--paper:#f2f0e9;--panel:#faf9f5;--line:#dedbd2;--accent:#9b6a43}
 *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}
-.app{height:100%;display:grid;grid-template-columns:330px 1fr}
-.sidebar{position:relative;z-index:2;background:var(--panel);border-right:1px solid var(--line);padding:28px 25px;display:flex;flex-direction:column;gap:22px;overflow:auto}
-.brand{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between}
-h1{font-family:Georgia,serif;font-size:42px;font-weight:400;letter-spacing:-.04em;margin:2px 0 0}
-.sub{font-size:13px;line-height:1.6;color:#716c62;margin-top:-14px;max-width:250px}
-.rule{height:1px;background:var(--line)}
-.kicker{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
-.controls{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-button{font:inherit;cursor:pointer;border:1px solid var(--line);background:#fffdf8;color:var(--ink);border-radius:4px;padding:11px 10px;font-size:12px;transition:.2s}
-button:hover{border-color:var(--accent);color:var(--accent)}button.active{background:#302e28;color:#fff;border-color:#302e28}
-button.wide{grid-column:span 2}
-.swatches{display:flex;gap:9px;align-items:center}.swatch{width:27px;height:27px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px var(--line);padding:0}.swatch.active{box-shadow:0 0 0 2px var(--accent)}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}.stat{padding:12px;background:#f2efe7;border-radius:4px}.stat strong{display:block;font-family:Georgia,serif;font-size:21px;font-weight:400}.stat span{font-size:10px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
-.note{font-size:11px;line-height:1.55;color:#817c70;margin-top:auto}
-.stage{position:relative;min-width:0;background:radial-gradient(ellipse at 50% 37%,#e7e1d5 0%,#d8d2c7 52%,#c8c1b5 100%)}
-#view{width:100%;height:100%;display:block;touch-action:none}
-.topbar{position:absolute;top:22px;left:26px;right:26px;display:flex;justify-content:space-between;align-items:center;pointer-events:none}
-.pill{background:#f8f5eddd;border:1px solid #ffffff90;border-radius:30px;padding:9px 13px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#5f5a50;backdrop-filter:blur(8px)}
-.hint{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);background:#292720dd;color:#fff;border-radius:30px;padding:10px 15px;font-size:11px;white-space:nowrap;pointer-events:none}
-.corner{position:absolute;bottom:22px;right:24px;font-size:10px;color:#5d584f;letter-spacing:.12em;text-transform:uppercase}
-@media(max-width:760px){.app{grid-template-columns:1fr;grid-template-rows:auto 1fr}.sidebar{padding:16px 18px;gap:12px;max-height:43vh}.brand{display:none}h1{font-size:30px}.sub{margin:0;max-width:none}.rule{display:none}.note{display:none}.stats{grid-template-columns:repeat(4,1fr)}.stat{padding:7px}.stat strong{font-size:16px}.stage{min-height:0}.topbar{top:10px;left:12px;right:12px}.hint{bottom:12px}.corner{display:none}}
+.app{height:100%;display:grid;grid-template-columns:310px 1fr}.sidebar{z-index:2;background:var(--panel);border-right:1px solid var(--line);padding:26px 23px;display:flex;flex-direction:column;gap:19px;overflow:auto}
+.brand{font-size:10px;letter-spacing:.19em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between}
+h1{font-family:Georgia,serif;font-size:44px;font-weight:400;letter-spacing:.02em;margin:0}.sub{font-size:12px;line-height:1.65;color:#716d63;margin:-12px 0 0}
+.rule{height:1px;background:var(--line)}.kicker{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:8px}button{font:inherit;cursor:pointer;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:3px;padding:10px 8px;font-size:11px}button:hover{border-color:var(--accent)}button.active{background:#302e28;color:#fff;border-color:#302e28}button.wide{grid-column:span 2}
+.swatches{display:flex;gap:10px}.swatch{width:28px;height:28px;border-radius:50%;padding:0;border:2px solid white;box-shadow:0 0 0 1px var(--line)}.swatch.active{box-shadow:0 0 0 2px var(--accent)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:9px}.stat{padding:10px;background:#f0eee7}.stat strong{display:block;font-family:Georgia,serif;font-size:21px;font-weight:400}.stat span{font-size:9px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.note{font-size:10px;line-height:1.55;color:#777267;margin-top:auto}
+.stage{position:relative;min-width:0;background:radial-gradient(ellipse at 50% 35%,#eeece5 0%,#d9d6ce 56%,#c6c2b9 100%)}#view{width:100%;height:100%;display:block;touch-action:none}
+.topbar{position:absolute;top:20px;left:24px;right:24px;display:flex;justify-content:space-between;pointer-events:none}.pill{background:#f8f7f1dd;border:1px solid #ffffffaa;border-radius:30px;padding:9px 13px;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#5f5b52;backdrop-filter:blur(8px)}
+.hint{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);background:#292720dd;color:white;border-radius:30px;padding:9px 14px;font-size:10px;white-space:nowrap;pointer-events:none}.corner{position:absolute;bottom:20px;right:22px;font-size:9px;color:#625e55;letter-spacing:.12em;text-transform:uppercase}
+@media(max-width:760px){.app{grid-template-columns:1fr;grid-template-rows:auto 1fr}.sidebar{padding:14px 16px;gap:10px;max-height:42vh}.brand{display:none}h1{font-size:30px}.sub{margin:0}.rule{display:none}.note{display:none}.stats{grid-template-columns:repeat(4,1fr)}.stat{padding:6px}.stat strong{font-size:15px}.stage{min-height:0}.topbar{top:9px;left:10px;right:10px}.hint{bottom:10px}.corner{display:none}}
 </style>
 </head>
 <body>
 <div class="app">
 <aside class="sidebar">
 <div class="brand"><span>Furniture typology · Sem 05</span><span>01 / 01</span></div>
-<h1>KORU<span style="color:#a97851">.</span></h1>
-<p class="sub">A modular partition, pinboard and everyday-accessory organiser — inspired by the protective form of a kangaroo pouch.</p>
+<h1>KERU<span style="color:#a97851">.</span></h1>
+<p class="sub">A modular pinboard and organiser. Rebuilt from the original furniture design references.</p>
 <div class="rule"></div>
-<section><div class="kicker">Explore the model</div><div class="controls">
-<button id="single">Single module</button><button id="triple" class="active">3-panel system</button>
-<button id="front">Front view</button><button id="reset">Reset orbit</button>
-<button id="auto" class="wide active">Pause auto-rotation</button>
+<section><div class="kicker">Model arrangement</div><div class="controls">
+<button id="single">Single unit</button><button id="triple" class="active">3-unit system</button>
+<button id="front">Front elevation</button><button id="reset">Reset view</button>
+<button id="auto" class="wide">Start slow rotation</button>
 </div></section>
 <section><div class="kicker">Timber finish</div><div class="swatches">
-<button class="swatch active" data-wood="teak" title="Natural teak" style="background:linear-gradient(135deg,#d9a46c,#8d5630)"></button>
-<button class="swatch" data-wood="smoked" title="Smoked oak" style="background:linear-gradient(135deg,#8e6a4d,#49352a)"></button>
-<button class="swatch" data-wood="light" title="Pale ash" style="background:linear-gradient(135deg,#e5d1ad,#b18b5c)"></button>
+<button class="swatch active" data-wood="teak" title="Natural teak" style="background:linear-gradient(135deg,#d2a071,#805033)"></button>
+<button class="swatch" data-wood="walnut" title="Walnut" style="background:linear-gradient(135deg,#88634b,#39271f)"></button>
+<button class="swatch" data-wood="ash" title="Pale ash" style="background:linear-gradient(135deg,#e4d2b1,#b18d62)"></button>
 </div></section>
-<section><div class="kicker">Key dimensions · retained</div><div class="stats">
+<section><div class="kicker">Design dimensions</div><div class="stats">
 <div class="stat"><strong>1150</strong><span>Overall height · mm</span></div>
 <div class="stat"><strong>450</strong><span>Overall width · mm</span></div>
-<div class="stat"><strong>410²</strong><span>Clear pinboard · mm</span></div>
-<div class="stat"><strong>4</strong><span>Accessory rails</span></div>
+<div class="stat"><strong>410 × 450</strong><span>Clear pinboard · mm</span></div>
+<div class="stat"><strong>4</strong><span>Horizontal rails</span></div>
 </div></section>
 <div class="rule"></div>
-<p class="note">Interactive concept visualisation based on the supplied KORU design images and retained dimensions. Depth, connector hardware, finish response and small construction details are illustrative; verify against the native SketchUp model and a physical prototype before fabrication.</p>
+<p class="note">Visual reconstruction from your supplied front and perspective reference images. Overall module envelope: 450 W × 1150 H mm. Timber member section shown as 20 × 40 mm. Depth and connector detailing remain indicative where the source drawings do not specify them.</p>
 </aside>
 <main class="stage">
-<div class="topbar"><span class="pill">Interactive 360° visualisation</span><span class="pill" id="viewLabel">3-panel · perspective</span></div>
+<div class="topbar"><span class="pill">KERU · 360° model</span><span class="pill" id="viewLabel">3-unit system · perspective</span></div>
 <canvas id="view"></canvas>
-<div class="hint">Drag to orbit · Scroll to zoom · Right-drag to pan</div>
-<div class="corner">KORU / Design study</div>
+<div class="hint">Drag to orbit · Scroll to zoom · Right-drag to pan</div><div class="corner">KERU / Furniture study</div>
 </main>
 </div>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
 <script type="module">
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
+import * as THREE from 'three';
 import {OrbitControls} from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js';
 import {RoomEnvironment} from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/environments/RoomEnvironment.js';
+import {RoundedBoxGeometry} from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/geometries/RoundedBoxGeometry.js';
 const canvas=document.querySelector('#view');
 const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
 renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(canvas.clientWidth,canvas.clientHeight);
 renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
-renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.12;
+renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;
 const scene=new THREE.Scene();
-const camera=new THREE.PerspectiveCamera(34,canvas.clientWidth/canvas.clientHeight,.1,100);
-camera.position.set(2.6,1.65,3.7);
-const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.dampingFactor=.06;controls.target.set(0,.58,0);controls.minDistance=1.25;controls.maxDistance=8;controls.maxPolarAngle=Math.PI*.49;controls.autoRotate=true;controls.autoRotateSpeed=.7;
-const pmrem=new THREE.PMREMGenerator(renderer);scene.environment=pmrem.fromScene(new RoomEnvironment(),.04).texture;
-scene.add(new THREE.HemisphereLight(0xfff4e4,0x77716a,2.0));
-const key=new THREE.DirectionalLight(0xffe4c3,3.0);key.position.set(-3,5,4);key.castShadow=true;key.shadow.mapSize.set(2048,2048);key.shadow.camera.left=-4;key.shadow.camera.right=4;key.shadow.camera.top=4;key.shadow.camera.bottom=-4;scene.add(key);
-const fill=new THREE.DirectionalLight(0xd8e2ff,1.15);fill.position.set(4,2,-3);scene.add(fill);
-const floor=new THREE.Mesh(new THREE.PlaneGeometry(200,200),new THREE.MeshStandardMaterial({color:0xd2ccc1,roughness:.94}));floor.rotation.x=-Math.PI/2;floor.position.y=-.012;floor.receiveShadow=true;scene.add(floor);
-function grainTexture(base,seed=1){const c=document.createElement('canvas');c.width=256;c.height=512;const x=c.getContext('2d');x.fillStyle=base;x.fillRect(0,0,256,512);let n=seed;const rand=()=>{n=(n*1664525+1013904223)>>>0;return n/4294967296};for(let i=0;i<1900;i++){const xx=rand()*256,yy=rand()*512,w=rand()*1.7+.2;x.strokeStyle=i%4?'rgba(70,38,18,.055)':'rgba(255,225,180,.10)';x.lineWidth=w;x.beginPath();x.moveTo(xx,yy);x.bezierCurveTo(xx+(rand()-.5)*10,yy+30,xx+(rand()-.5)*12,yy+80,xx+(rand()-.5)*6,yy+150);x.stroke()}const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(1,1);return t}
-function feltTexture(){const c=document.createElement('canvas');c.width=512;c.height=512;const x=c.getContext('2d');x.fillStyle='#c8b8a4';x.fillRect(0,0,512,512);let n=9;for(let i=0;i<65000;i++){n=(n*1664525+1013904223)>>>0;const a=.025+(n%100)/1800;x.fillStyle='rgba(255,255,255,'+a+')';x.fillRect(n%512,(n>>>9)%512,1.4,1.4)}const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;return t}
-const felt=feltTexture();const woods={teak:{color:'#c38b58',map:grainTexture('#bd8250',3)},smoked:{color:'#76523c',map:grainTexture('#76523c',8)},light:{color:'#d7bd91',map:grainTexture('#d5ba8c',12)}};
-let woodKey='teak';const root=new THREE.Group();scene.add(root);
-const woodMat=()=>new THREE.MeshStandardMaterial({color:woods[woodKey].color,map:woods[woodKey].map,roughness:.38,metalness:0});
-const feltMat=new THREE.MeshStandardMaterial({color:0xe0d3c1,map:felt,roughness:.96});
-const darkMat=new THREE.MeshStandardMaterial({color:0x554638,roughness:.65});
-function box(parent,w,h,d,mat,x,y,z,bevel=.002){const g=new THREE.BoxGeometry(w,h,d);const m=new THREE.Mesh(g,mat);m.position.set(x,y,z);m.castShadow=true;m.receiveShadow=true;parent.add(m);return m}
-function addPaper(parent,x,y,z,rot,color,text){const group=new THREE.Group();group.position.set(x,y,z);group.rotation.y=rot;parent.add(group);box(group,.105,.145,.002,new THREE.MeshStandardMaterial({color,roughness:.9}),0,0,0);box(group,.004,.012,.002,darkMat,-.032,.044,.001);for(let i=0;i<4;i++)box(group,.065,.0018,.002,darkMat,0,.018-i*.012,.001);const pin=new THREE.Mesh(new THREE.SphereGeometry(.008,12,8),new THREE.MeshStandardMaterial({color:0xb66b3d,metalness:.45,roughness:.3}));pin.position.set(0,.073,.008);group.add(pin)}
-function makeModule(offset){const g=new THREE.Group();g.position.x=offset;root.add(g);const wm=woodMat();const W=.45,H=1.15,D=.042,post=.02,railH=.018;
-for(const x of [-W/2+post/2,W/2-post/2])box(g,post,H,.04,wm,x,H/2,0);
-const boardY=.905,boardH=.49; // upper 490 mm zone
-for(const x of [-W/2+post/2,W/2-post/2])box(g,post,boardH,.042,wm,x,boardY,0);
-box(g,W-2*post,post,.042,wm,0,boardY+boardH/2-post/2,0);
-box(g,W-2*post,post,.042,wm,0,boardY-boardH/2+post/2,0);
-box(g,W-2*post-.006,boardH-2*post,.009,feltMat,0,boardY,.018);
-const rails=[.11,.24,.37,.50];rails.forEach(y=>{box(g,W-2*post,railH,.022,wm,0,y,0);});
-for(const x of [-W/2+.006,W/2-.006]){for(const y of [.30,.80]){const sleeve=new THREE.Mesh(new THREE.CylinderGeometry(.009,.009,.045,20),darkMat);sleeve.rotation.z=Math.PI/2;sleeve.position.set(x,y,0);g.add(sleeve)}}
-addPaper(g,-.09,.94,.026,-.04,0xf4efe4);addPaper(g,.045,.91,.027,.035,0xf0eadc);box(g,.055,.045,.003,new THREE.MeshStandardMaterial({color:0xb8c89c}),-.09,.835,.029);box(g,.055,.045,.003,new THREE.MeshStandardMaterial({color:0xe3c57c}),.05,.81,.029);
-return g}
-let modules=[];function setLayout(count){while(root.children.length)root.remove(root.children[0]);modules=[];if(count===1){modules.push(makeModule(0));controls.target.set(0,.58,0);camera.position.set(1.9,1.45,2.8)}else{[-.45,0,.45].forEach(x=>modules.push(makeModule(x)));controls.target.set(0,.58,0);camera.position.set(2.5,1.55,3.6)}controls.update();document.querySelector('#viewLabel').textContent=(count===1?'Single module':'3-panel')+' · perspective';document.querySelector('#single').classList.toggle('active',count===1);document.querySelector('#triple').classList.toggle('active',count===3)}
+const camera=new THREE.PerspectiveCamera(32,canvas.clientWidth/canvas.clientHeight,.1,100);
+camera.position.set(2.0,1.35,2.8);
+const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.dampingFactor=.055;controls.target.set(0,.58,0);controls.minDistance=1.15;controls.maxDistance=7;controls.maxPolarAngle=Math.PI*.49;controls.autoRotate=false;controls.autoRotateSpeed=.45;
+const pmrem=new THREE.PMREMGenerator(renderer);scene.environment=pmrem.fromScene(new RoomEnvironment(),.04).texture;pmrem.dispose();
+scene.add(new THREE.HemisphereLight(0xfff7eb,0x77716a,1.65));
+const key=new THREE.DirectionalLight(0xffe8d0,3.2);key.position.set(-2.8,4.5,3.8);key.castShadow=true;key.shadow.mapSize.set(2048,2048);key.shadow.camera.left=-3;key.shadow.camera.right=3;key.shadow.camera.top=3;key.shadow.camera.bottom=-3;key.shadow.bias=-.00025;scene.add(key);
+const fill=new THREE.DirectionalLight(0xe3e9f1,1.05);fill.position.set(3,2,-3);scene.add(fill);
+const rim=new THREE.DirectionalLight(0xffd9b5,.75);rim.position.set(0,3,-2);scene.add(rim);
+const floorMat=new THREE.MeshStandardMaterial({color:0xd2d0c9,roughness:.88,metalness:0});
+const floor=new THREE.Mesh(new THREE.PlaneGeometry(200,200),floorMat);floor.rotation.x=-Math.PI/2;floor.position.y=-.008;floor.receiveShadow=true;scene.add(floor);
+function textureCanvas(w,h,draw){const c=document.createElement('canvas');c.width=w;c.height=h;draw(c.getContext('2d'),w,h);return c}
+function woodMaps(base,seed){let n=seed;const rand=()=>{n=(n*1664525+1013904223)>>>0;return n/4294967296};const c=textureCanvas(512,512,(x,w,h)=>{x.fillStyle=base;x.fillRect(0,0,w,h);for(let i=0;i<2500;i++){const xx=rand()*w,yy=rand()*h;x.strokeStyle=i%5===0?'rgba(255,220,170,.14)':'rgba(48,27,13,.075)';x.lineWidth=rand()*1.4+.25;x.beginPath();x.moveTo(xx,yy);x.bezierCurveTo(xx+(rand()-.5)*8,yy+55,xx+(rand()-.5)*12,yy+120,xx+(rand()-.5)*5,yy+230);x.stroke()}for(let i=0;i<4500;i++){x.fillStyle=rand()>.5?'rgba(255,255,255,.025)':'rgba(30,18,10,.025)';x.fillRect(rand()*w,rand()*h,1,1)}});const map=new THREE.CanvasTexture(c);map.colorSpace=THREE.SRGBColorSpace;map.wrapS=map.wrapT=THREE.RepeatWrapping;map.repeat.set(1.5,1.2);const bump=new THREE.CanvasTexture(c);bump.wrapS=bump.wrapT=THREE.RepeatWrapping;bump.repeat.copy(map.repeat);return {map,bump}}
+const woodDefs={teak:{base:'#ad7549',color:0xe0b184,seed:7},walnut:{base:'#684633',color:0xc39a78,seed:19},ash:{base:'#c7ad84',color:0xf0dfbd,seed:31}};
+let woodKey='teak';let woodMaterial;
+function makeWood(){const d=woodDefs[woodKey],maps=woodMaps(d.base,d.seed);return new THREE.MeshStandardMaterial({color:d.color,map:maps.map,bumpMap:maps.bump,bumpScale:.012,roughness:.48,metalness:0})}
+woodMaterial=makeWood();
+function corkMaterial(){const c=textureCanvas(512,512,(x,w,h)=>{x.fillStyle='#bca58d';x.fillRect(0,0,w,h);let n=14;for(let i=0;i<48000;i++){n=(n*1664525+1013904223)>>>0;const xx=n%w,yy=(n>>>9)%h,a=.035+(n%80)/950;x.fillStyle=(n%3===0?'rgba(74,51,34,':'rgba(255,245,224,')+a+')';const s=(n%3)+.4;x.fillRect(xx,yy,s,s)}});const map=new THREE.CanvasTexture(c);map.colorSpace=THREE.SRGBColorSpace;const bump=new THREE.CanvasTexture(c);return new THREE.MeshStandardMaterial({map,bumpMap:bump,bumpScale:.025,roughness:.96})}
+const corkMat=corkMaterial();
+const plywoodMat=new THREE.MeshStandardMaterial({color:0xb58c65,roughness:.68});
+const metalMat=new THREE.MeshStandardMaterial({color:0x77736c,metalness:.78,roughness:.3});
+const paperMats=[0xf2eee4,0xece7dc,0xd7dfc9,0xe4d2a6].map(c=>new THREE.MeshStandardMaterial({color:c,roughness:.92,side:THREE.DoubleSide}));
+const root=new THREE.Group();scene.add(root);
+function beam(parent,w,h,d,mat,x,y,z,r=.001){const geo=new RoundedBoxGeometry(w,h,d,3,r);const m=new THREE.Mesh(geo,mat);m.position.set(x,y,z);m.castShadow=true;m.receiveShadow=true;parent.add(m);return m}
+function addPaper(parent,x,y,z,angle,matIndex){const g=new THREE.Group();g.position.set(x,y,z);g.rotation.y=angle;parent.add(g);beam(g,.092,.135,.002,paperMats[matIndex],0,0,0,.001);const ink=new THREE.MeshBasicMaterial({color:0x77746d});for(let i=0;i<5;i++)beam(g,.059,.0015,.001,ink,0,.025-i*.012,.002,.0003);const pin=new THREE.Mesh(new THREE.SphereGeometry(.006,16,12),new THREE.MeshStandardMaterial({color:0xb36d3f,metalness:.45,roughness:.28}));pin.position.set(0,.067,.008);g.add(pin)}
+function makeModule(offset){const g=new THREE.Group();g.position.x=offset;root.add(g);
+ const W=.45,H=1.15,postW=.02,postD=.04,boardBottom=.66,boardTop=1.15,boardOuterH=.49,railD=.022,railH=.012;
+ // Two continuous side uprights define the silhouette and carry the four lower rails.
+ for(const x of [-W/2+postW/2,W/2-postW/2])beam(g,postW,H,postD,woodMaterial,x,H/2,0,.0015);
+ // Top and lower cross members frame the cork infill; side members are the continuous uprights.
+ beam(g,W-2*postW,postW,postD,woodMaterial,0,boardTop-postW/2,0,.0015);
+ beam(g,W-2*postW,postW,postD,woodMaterial,0,boardBottom+postW/2,0,.0015);
+ // Cork face and thin backing, sized to the 410 x 450 mm clear opening.
+ beam(g,W-2*postW-.002,boardOuterH-2*postW,.008,plywoodMat,0,(boardBottom+boardTop)/2,-.012,.001);
+ beam(g,W-2*postW-.004,boardOuterH-2*postW-.004,.004,corkMat,0,(boardBottom+boardTop)/2,.006,.001);
+ // Four narrow, evenly spaced horizontal organiser rails below the board.
+ [.10,.245,.39,.535].forEach(y=>beam(g,W-2*postW,railH,railD,woodMaterial,0,y,0,.001));
+ // Small projecting side connector sleeves, as visible in the supplied reference.
+ for(const side of [-1,1]){for(const y of [.34,.78]){const sleeve=new THREE.Mesh(new THREE.CylinderGeometry(.007,.007,.035,24),metalMat);sleeve.rotation.z=Math.PI/2;sleeve.position.set(side*(W/2+.012),y,0);sleeve.castShadow=true;g.add(sleeve);}}
+ // A restrained example of the intended pinboard use, matching the supplied occupied view.
+ addPaper(g,-.085,.94,.014,-.035,0);addPaper(g,.055,.91,.014,.025,1);
+ beam(g,.052,.038,.002,paperMats[2],-.085,.825,.015,.001);beam(g,.052,.038,.002,paperMats[3],.055,.795,.015,.001);
+ return g}
+let layout=3;
+function setLayout(count){while(root.children.length)root.remove(root.children[0]);layout=count;if(count===1){makeModule(0);controls.target.set(0,.58,0);camera.position.set(1.65,1.25,2.45)}else{[-.45,0,.45].forEach(x=>makeModule(x));controls.target.set(0,.58,0);camera.position.set(2.25,1.35,3.25)}controls.update();document.querySelector('#viewLabel').textContent=(count===1?'Single unit':'3-unit system')+' · perspective';document.querySelector('#single').classList.toggle('active',count===1);document.querySelector('#triple').classList.toggle('active',count===3)}
 setLayout(3);
 document.querySelector('#single').onclick=()=>setLayout(1);document.querySelector('#triple').onclick=()=>setLayout(3);
-document.querySelector('#front').onclick=()=>{camera.position.set(0,1.05,3.8);controls.target.set(0,.58,0);controls.update();document.querySelector('#viewLabel').textContent='Front elevation'};
-document.querySelector('#reset').onclick=()=>{setLayout(modules.length===1?1:3);controls.autoRotate=true;document.querySelector('#auto').textContent='Pause auto-rotation';document.querySelector('#auto').classList.add('active')};
-document.querySelector('#auto').onclick=e=>{controls.autoRotate=!controls.autoRotate;e.currentTarget.textContent=controls.autoRotate?'Pause auto-rotation':'Start auto-rotation';e.currentTarget.classList.toggle('active',controls.autoRotate)};
-document.querySelectorAll('.swatch').forEach(b=>b.onclick=()=>{woodKey=b.dataset.wood;document.querySelectorAll('.swatch').forEach(s=>s.classList.toggle('active',s===b));root.traverse(o=>{if(o.isMesh&&o.material&&o.material.map&&o.material.map!==felt){o.material=woodMat()}})});
+document.querySelector('#front').onclick=()=>{camera.position.set(0,1.05,4.1);controls.target.set(0,.58,0);controls.update();document.querySelector('#viewLabel').textContent='Front elevation'};
+document.querySelector('#reset').onclick=()=>{setLayout(layout);controls.autoRotate=false;document.querySelector('#auto').textContent='Start slow rotation';document.querySelector('#auto').classList.remove('active')};
+document.querySelector('#auto').onclick=e=>{controls.autoRotate=!controls.autoRotate;e.currentTarget.textContent=controls.autoRotate?'Pause rotation':'Start slow rotation';e.currentTarget.classList.toggle('active',controls.autoRotate)};
+document.querySelectorAll('.swatch').forEach(b=>b.onclick=()=>{woodKey=b.dataset.wood;woodMaterial=makeWood();document.querySelectorAll('.swatch').forEach(s=>s.classList.toggle('active',s===b));root.traverse(o=>{if(o.isMesh&&o.material===o.userData.woodMat)o.material=woodMaterial});root.traverse(o=>{if(o.isMesh&&o.material&&o.material.userData&&o.material.userData.isWood)o.material=woodMaterial})});
+// Keep references to all timber members so finish changes affect every wooden component.
+function applyWood(){root.traverse(o=>{if(o.isMesh&&o.userData.wood)o.material=woodMaterial})}
+document.querySelectorAll('.swatch').forEach(b=>b.addEventListener('click',applyWood));
+const originalBeam=beam;
 const resize=()=>{const w=canvas.clientWidth,h=canvas.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()};new ResizeObserver(resize).observe(canvas);
 function animate(){requestAnimationFrame(animate);controls.update();renderer.render(scene,camera)}animate();
 </script>
